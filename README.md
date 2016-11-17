@@ -1,3 +1,3 @@
-# vspk-vro-workflows
+# VSPK-VRO-Workflows
 
-Advanced Workflows for the Nuage vRO plugin (vspk-vro) 
+Advanced workflows for the [VSPK Plug-In for vRO](https://github.com/nuagenetworks/vspk-vro) 
