@@ -3,7 +3,7 @@
 <properties>
 <comment>Exported from [server]</comment>
 <entry key="categoryPath">Library.VSPK.Advanced.Vm</entry>
-<entry key="name">Add VMInterface to VPort</entry>
+<entry key="name">Add VMInterface to VM</entry>
 <entry key="type">Workflow</entry>
 <entry key="id">d3d3b4da-afba-4421-8ca5-4a6bf5d29e78</entry>
 </properties>
