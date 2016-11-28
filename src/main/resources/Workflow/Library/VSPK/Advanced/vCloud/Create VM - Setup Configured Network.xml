@@ -30,9 +30,6 @@
   <attrib name="configuredNetworkSimpleEntityId" type="string" read-only="false">
     <value encoded="n"><![CDATA[]]></value>
   </attrib>
-  <attrib name="subnet" type="VSPK:Subnet" read-only="false">
-    <value encoded="n"><![CDATA[__NULL__]]></value>
-  </attrib>
   <attrib name="vmIpAddress" type="string" read-only="false">
     <value encoded="n"><![CDATA[]]></value>
   </attrib>
@@ -56,7 +53,6 @@ return (l2Domain  != null ) ;]]></script>
       <bind name="vmExternalID" type="string" export-name="vmSimpleEntityId"></bind>
       <bind name="vPortExternalID" type="string" export-name="vmUUID"></bind>
       <bind name="vmName" type="string" export-name="vmName"></bind>
-      <bind name="subnet" type="VSPK:Subnet" export-name="subnet"></bind>
       <bind name="vmIpAddress" type="string" export-name="vmIpAddress"></bind>
     </in-binding>
     <out-binding></out-binding>

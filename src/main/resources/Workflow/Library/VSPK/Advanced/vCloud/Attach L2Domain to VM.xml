@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item6" object-name="workflow:name=generic" id="05f445b6-f039-442d-919a-4746378e595e" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
-  <display-name><![CDATA[Attach L2Domain/Subnet to VM]]></display-name>
+  <display-name><![CDATA[Attach L2Domain to VM]]></display-name>
   <position y="50.0" x="100.0"></position>
   <input>
     <param name="l2Domain" type="VSPK:L2Domain"></param>
-    <param name="subnet" type="VSPK:Subnet"></param>
     <param name="networkConnectionName" type="string"></param>
     <param name="vmName" type="string"></param>
     <param name="vmUUID" type="string"></param>
@@ -92,11 +91,7 @@ vmInterface.name = interfaceName;
 vmInterface.MAC = vmMAC;
 vmInterface.VPortID = vport.id;
 vmInterface.externalID = externalID;
-if (subnet) {
-   vmInterface.IPAddress = vmIpAddress; // Only needed for L3 domain
-} else {
-   vmInterface.IPAddress = null;
-}
+vmInterface.IPAddress = null;
 vm.createVMInterface(session, vmInterface);]]></script>
     <in-binding>
       <bind name="vport" type="VSPK:VPort" export-name="vPort"></bind>
@@ -106,7 +101,6 @@ vm.createVMInterface(session, vmInterface);]]></script>
       <bind name="interfaceName" type="string" export-name="vPortName"></bind>
       <bind name="externalID" type="string" export-name="vmExternalID"></bind>
       <bind name="vmIpAddress" type="string" export-name="vmIpAddress"></bind>
-      <bind name="subnet" type="VSPK:Subnet" export-name="subnet"></bind>
     </in-binding>
     <out-binding></out-binding>
     <position y="291.77272727272725" x="844.5"></position>
@@ -114,16 +108,10 @@ vm.createVMInterface(session, vmInterface);]]></script>
   <workflow-item  name="item7" out-name="item9" type="task">
     <display-name><![CDATA[Get ME]]></display-name>
     <script encoded="false"><![CDATA[var session;
-if (l2Domain) {
-   session = l2Domain.session;
-} else if (subnet) {
-   session = subnet.session;
-}
-
+session = l2Domain.session;
 me = session.me;]]></script>
     <in-binding>
       <bind name="l2Domain" type="VSPK:L2Domain" export-name="l2Domain"></bind>
-      <bind name="subnet" type="VSPK:Subnet" export-name="subnet"></bind>
     </in-binding>
     <out-binding>
       <bind name="me" type="VSPK:Me" export-name="me"></bind>
@@ -159,17 +147,12 @@ vPortFilter = "name IS \'" + vPortName + "\'";]]></script>
     <display-name><![CDATA[Merge]]></display-name>
     <script encoded="false"><![CDATA[var session = vmInterface.session;
 vmInterface.MAC = vmMAC;
-if (subnet) {
-   vmInterface.IPAddress = vmIpAddress; // Only needed for L3 domain
-} else {
-   vmInterface.IPAddress = null;
-}
+vmInterface.IPAddress = null;
 vmInterface.save(session, 1);]]></script>
     <in-binding>
       <bind name="vmInterface" type="VSPK:VMInterface" export-name="vmInterface"></bind>
       <bind name="vmMAC" type="string" export-name="vmMAC"></bind>
       <bind name="vmIpAddress" type="string" export-name="vmIpAddress"></bind>
-      <bind name="subnet" type="VSPK:Subnet" export-name="subnet"></bind>
     </in-binding>
     <out-binding></out-binding>
     <position y="291.77272727272725" x="944.5"></position>
@@ -202,7 +185,6 @@ return (vmInterface  != null ) ;]]></script>
       <bind name="vPortExternalID" type="string" export-name="vPortExternalID"></bind>
       <bind name="vPortName" type="string" export-name="vPortName"></bind>
       <bind name="vPortFilter" type="string" export-name="vPortFilter"></bind>
-      <bind name="subnet" type="VSPK:Subnet" export-name="subnet"></bind>
     </in-binding>
     <out-binding>
       <bind name="outVPort" type="VSPK:VPort" export-name="vPort"></bind>
@@ -216,7 +198,6 @@ return (vmInterface  != null ) ;]]></script>
       <bind name="vPortExternalID" type="string" export-name="vPortExternalID"></bind>
       <bind name="vPortName" type="string" export-name="vPortName"></bind>
       <bind name="vPortFilter" type="string" export-name="vPortFilter"></bind>
-      <bind name="subnet" type="VSPK:Subnet" export-name="subnet"></bind>
     </in-binding>
     <out-binding>
       <bind name="outVPort" type="VSPK:VPort" export-name="vPort"></bind>
@@ -292,9 +273,6 @@ return (subnet  != null ) ;]]></script>
   <presentation>
     <p-param name="l2Domain">
       <desc><![CDATA[l2Domain]]></desc>
-    </p-param>
-    <p-param name="subnet">
-      <desc><![CDATA[subnet]]></desc>
     </p-param>
     <p-param name="networkConnectionName">
       <desc><![CDATA[networkConnectionName]]></desc>

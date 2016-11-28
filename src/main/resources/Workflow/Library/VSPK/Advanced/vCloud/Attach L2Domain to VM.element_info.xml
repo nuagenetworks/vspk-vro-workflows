@@ -3,7 +3,7 @@
 <properties>
 <comment>Exported from [server]</comment>
 <entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
-<entry key="name">Attach L2Domain/Subnet to VM</entry>
+<entry key="name">Attach L2Domain to VM</entry>
 <entry key="type">Workflow</entry>
 <entry key="id">05f445b6-f039-442d-919a-4746378e595e</entry>
 </properties>
