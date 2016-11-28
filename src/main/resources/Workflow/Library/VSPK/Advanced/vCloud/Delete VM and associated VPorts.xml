@@ -11,7 +11,7 @@
   <attrib name="session" type="VSPK:Session" read-only="false">
     <value encoded="n"><![CDATA[__NULL__]]></value>
   </attrib>
-  <workflow-item  name="item1" out-name="item2" type="task">
+  <workflow-item name="item1" out-name="item2" type="task">
     <display-name><![CDATA[Get VPorts]]></display-name>
     <script encoded="false"><![CDATA[vmInterfaces = vm.interfaces;
 
@@ -29,19 +29,19 @@ for (var i in vmInterfaces) {
       <bind name="vPortIds" type="Array/string" export-name="vPortIds"></bind>
     </out-binding>
     <position y="55.40909090909091" x="344.5"></position>
-  </workflow-item >
-  <workflow-item  name="item2" out-name="item3" type="link" linked-workflow-id="53b797ae-6e9b-598b-924e-f71e719700c5">
+  </workflow-item>
+  <workflow-item name="item2" out-name="item3" type="link" linked-workflow-id="53b797ae-6e9b-598b-924e-f71e719700c5">
     <display-name><![CDATA[Remove VM]]></display-name>
     <in-binding>
       <bind name="vMObj" type="VSPK:VM" export-name="vm"></bind>
     </in-binding>
     <out-binding></out-binding>
     <position y="55.40909090909091" x="504.5"></position>
-  </workflow-item >
-  <workflow-item  name="item0" type="end" end-mode="0">
+  </workflow-item>
+  <workflow-item name="item0" type="end" end-mode="0">
     <position y="45.40909090909091" x="844.5"></position>
-  </workflow-item >
-  <workflow-item  name="item4" out-name="item1" type="task">
+  </workflow-item>
+  <workflow-item name="item4" out-name="item1" type="task">
     <display-name><![CDATA[Initialize]]></display-name>
     <script encoded="false"><![CDATA[session = vm.session;]]></script>
     <in-binding>
@@ -51,8 +51,8 @@ for (var i in vmInterfaces) {
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
     </out-binding>
     <position y="55.40909090909091" x="204.5"></position>
-  </workflow-item >
-  <workflow-item  name="item3" out-name="item0" type="foreach">
+  </workflow-item>
+  <workflow-item name="item3" out-name="item0" type="foreach">
     <display-name><![CDATA[Foreach (Delete VPort)]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
@@ -61,7 +61,7 @@ for (var i in vmInterfaces) {
     <out-binding></out-binding>
     <reference type="Workflow" id="d4c534af-4223-4fb2-8e62-80ff66646272"></reference>
     <position y="55.40909090909091" x="644.5"></position>
-  </workflow-item >
+  </workflow-item>
   <presentation>
     <p-param name="vm">
       <desc><![CDATA[vm]]></desc>

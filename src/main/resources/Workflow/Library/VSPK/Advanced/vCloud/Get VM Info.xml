@@ -15,10 +15,10 @@
     <param name="networkIpAddrs" type="Properties"></param>
     <param name="vimServerHref" type="string"></param>
   </output>
-  <workflow-item  name="item0" type="end" end-mode="0">
+  <workflow-item name="item0" type="end" end-mode="0">
     <position y="45.40909090909091" x="384.5"></position>
-  </workflow-item >
-  <workflow-item  name="item1" out-name="item0" type="task">
+  </workflow-item>
+  <workflow-item name="item1" out-name="item0" type="task">
     <display-name><![CDATA[Scriptable task]]></display-name>
     <script encoded="false"><![CDATA[var vm = vcdHost.getEntityById(VclFinderType.VM, vmEntityId);
 if (vm) {
@@ -157,7 +157,7 @@ if (vm) {
       <bind name="vimServerHref" type="string" export-name="vimServerHref"></bind>
     </out-binding>
     <position y="55.40909090909091" x="204.5"></position>
-  </workflow-item >
+  </workflow-item>
   <presentation>
     <p-param name="vcdHost">
       <desc><![CDATA[vcdHost]]></desc>
