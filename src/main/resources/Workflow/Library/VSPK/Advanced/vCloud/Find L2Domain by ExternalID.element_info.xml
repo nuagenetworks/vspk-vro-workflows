@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
+<entry key="name">Find L2Domain by ExternalID</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d191742a-f5bd-4fc3-a823-c0d687678fd7</entry>
+</properties>

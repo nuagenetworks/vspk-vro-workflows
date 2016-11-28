@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
+<entry key="name">Process Organization Notification</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3120a7c8-e517-473b-87a9-2f3679c1aa8c</entry>
+</properties>

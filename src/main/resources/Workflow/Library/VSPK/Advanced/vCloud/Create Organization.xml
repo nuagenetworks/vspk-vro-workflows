@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item0" object-name="workflow:name=generic" id="5ed98f9d-6f10-4ad4-8424-0e51055a5080" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Create Organization]]></display-name>
+  <position y="50.0" x="100.0"></position>
+  <input>
+    <param name="session" type="VSPK:Session"></param>
+    <param name="vcdHost" type="vCloud:Host"></param>
+    <param name="orgEntityId" type="string"></param>
+  </input>
+  <workflow-item  name="item0" out-name="item1" type="link" linked-workflow-id="722235f2-37ef-464f-a6fe-bad2ee13c8cd">
+    <display-name><![CDATA[Find or Create Enterprise for Organization]]></display-name>
+    <in-binding>
+      <bind name="session" type="VSPK:Session" export-name="session"></bind>
+      <bind name="vcdHost" type="vCloud:Host" export-name="vcdHost"></bind>
+      <bind name="orgEntityId" type="string" export-name="orgEntityId"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="outEnterprise" type="VSPK:Enterprise" explicitly-not-bound="true" export-name="NULL"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="204.5"></position>
+  </workflow-item >
+  <workflow-item  name="item1" type="end" end-mode="0">
+    <position y="45.40909090909091" x="385.0"></position>
+  </workflow-item >
+  <presentation>
+    <p-param name="session">
+      <desc><![CDATA[session]]></desc>
+    </p-param>
+    <p-param name="vcdHost">
+      <desc><![CDATA[vcdHost]]></desc>
+    </p-param>
+    <p-param name="orgEntityId">
+      <desc><![CDATA[orgEntityId]]></desc>
+    </p-param>
+  </presentation>
+</workflow>

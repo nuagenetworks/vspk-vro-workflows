@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item7" object-name="workflow:name=generic" id="a015c5b9-dc3c-47a7-82e4-032dd62b5f12" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Find Enterprise For Organization]]></display-name>
+  <position y="50.0" x="100.0"></position>
+  <input>
+    <param name="session" type="VSPK:Session"></param>
+    <param name="orgEntityId" type="string"></param>
+  </input>
+  <output>
+    <param name="outEnterprise" type="VSPK:Enterprise"></param>
+  </output>
+  <attrib name="me" type="VSPK:Me" read-only="false">
+    <value encoded="n"><![CDATA[__NULL__]]></value>
+  </attrib>
+  <attrib name="enterpriseFilter" type="string" read-only="false">
+    <value encoded="n"><![CDATA[externalID IS 'vcloud-org']]></value>
+  </attrib>
+  <attrib name="orgSimpleEntityId" type="string" read-only="false">
+    <value encoded="n"><![CDATA[]]></value>
+  </attrib>
+  <workflow-item  name="item5" out-name="item6" type="task">
+    <display-name><![CDATA[Set enterprise filter]]></display-name>
+    <script encoded="false"><![CDATA[enterpriseFilter = "externalID IS '" + orgSimpleEntityId + "'";]]></script>
+    <in-binding>
+      <bind name="orgSimpleEntityId" type="string" export-name="orgSimpleEntityId"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="enterpriseFilter" type="string" export-name="enterpriseFilter"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="504.5"></position>
+  </workflow-item >
+  <workflow-item  name="item6" out-name="item0" type="link" linked-workflow-id="5ac85a23-6583-5822-88f7-97de56959a66">
+    <display-name><![CDATA[Find Enterprise in Me]]></display-name>
+    <in-binding>
+      <bind name="meObj" type="VSPK:Me" export-name="me"></bind>
+      <bind name="filter" type="string" export-name="enterpriseFilter"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="enterpriseObj" type="VSPK:Enterprise" export-name="outEnterprise"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="644.5"></position>
+  </workflow-item >
+  <workflow-item  name="item7" out-name="item9" type="task">
+    <display-name><![CDATA[Get ME]]></display-name>
+    <script encoded="false"><![CDATA[me = session.me;]]></script>
+    <in-binding>
+      <bind name="session" type="VSPK:Session" export-name="session"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="me" type="VSPK:Me" export-name="me"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="204.5"></position>
+  </workflow-item >
+  <workflow-item  name="item9" out-name="item5" type="task" script-module="net.nuagenetworks.vro.vspk.vcloud/getSimpleEntityId">
+    <display-name><![CDATA[getSimpleEntityId]]></display-name>
+    <script encoded="false"><![CDATA[//Auto generated script, cannot be modified !
+actionResult = System.getModule("net.nuagenetworks.vro.vspk.vcloud").getSimpleEntityId(entityId) ;]]></script>
+    <in-binding>
+      <bind name="entityId" type="string" export-name="orgEntityId"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="actionResult" type="string" export-name="orgSimpleEntityId"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="345.0"></position>
+  </workflow-item >
+  <workflow-item  name="item0" type="end" end-mode="0">
+    <position y="45.40909090909091" x="824.5"></position>
+  </workflow-item >
+  <presentation>
+    <p-param name="session">
+      <desc><![CDATA[session]]></desc>
+    </p-param>
+    <p-param name="orgEntityId">
+      <desc><![CDATA[orgEntityId]]></desc>
+    </p-param>
+  </presentation>
+</workflow>

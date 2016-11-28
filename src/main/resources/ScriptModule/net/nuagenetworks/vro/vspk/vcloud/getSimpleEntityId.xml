@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dunes-script-module name="getSimpleEntityId" result-type="string" api-version="6.0.0" id="e672a26b-8d5b-49a9-8e2e-41d19f9f37a3" version="1.0.0" allowed-operations="vef">
+  <param n="entityId" t="string"><![CDATA[]]></param>
+  <script encoded="false"><![CDATA[if (entityId != null) {
+   var entityIdParts = entityId.split(':');
+   return entityIdParts[entityIdParts.length - 1];
+} else {
+   return null;
+}]]></script>
+</dunes-script-module>

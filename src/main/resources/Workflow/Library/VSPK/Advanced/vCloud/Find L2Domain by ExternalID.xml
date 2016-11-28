@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item4" object-name="workflow:name=generic" id="d191742a-f5bd-4fc3-a823-c0d687678fd7" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Find L2Domain by ExternalID]]></display-name>
+  <position y="36.31818181818181" x="245.0"></position>
+  <input>
+    <param name="session" type="VSPK:Session"></param>
+    <param name="externalID" type="string"></param>
+  </input>
+  <output>
+    <param name="outL2Domain" type="VSPK:L2Domain"></param>
+  </output>
+  <attrib name="l2DomainFilter" type="string" read-only="false">
+    <value encoded="n"><![CDATA[]]></value>
+  </attrib>
+  <workflow-item  name="item4" out-name="item1" type="task">
+    <display-name><![CDATA[Set L2Domain filter]]></display-name>
+    <script encoded="false"><![CDATA[l2DomainFilter = "externalID IS '" + externalID + "'";]]></script>
+    <in-binding>
+      <bind name="externalID" type="string" export-name="externalID"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="l2DomainFilter" type="string" export-name="l2DomainFilter"></bind>
+    </out-binding>
+    <position y="46.31818181818181" x="344.5"></position>
+  </workflow-item >
+  <workflow-item  name="item1" out-name="item0" type="task">
+    <display-name><![CDATA[Find L2Domain in Me]]></display-name>
+    <script encoded="false"><![CDATA[var me = session.me;
+
+outL2Domain = me.l2Domains.getFirst(session, l2DomainFilter);]]></script>
+    <in-binding>
+      <bind name="session" type="VSPK:Session" export-name="session"></bind>
+      <bind name="l2DomainFilter" type="string" export-name="l2DomainFilter"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="outL2Domain" type="VSPK:L2Domain" export-name="outL2Domain"></bind>
+    </out-binding>
+    <position y="46.31818181818181" x="484.5"></position>
+  </workflow-item >
+  <workflow-item  name="item0" type="end" end-mode="0">
+    <position y="36.31818181818181" x="645.0"></position>
+  </workflow-item >
+  <presentation>
+    <p-param name="session">
+      <desc><![CDATA[session]]></desc>
+    </p-param>
+    <p-param name="externalID">
+      <desc><![CDATA[externalID]]></desc>
+    </p-param>
+  </presentation>
+</workflow>

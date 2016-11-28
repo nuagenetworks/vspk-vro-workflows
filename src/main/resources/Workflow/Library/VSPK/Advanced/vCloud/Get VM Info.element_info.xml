@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
+<entry key="name">Get VM Info</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">72ef71ef-0d9c-4e94-9608-66f2884d1c0d</entry>
+</properties>

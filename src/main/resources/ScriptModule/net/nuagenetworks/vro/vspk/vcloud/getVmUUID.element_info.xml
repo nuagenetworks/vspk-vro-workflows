@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk.vcloud</entry>
+<entry key="name">getVmUUID</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">4da11e83-267d-4ccc-95f9-81dd5c631509</entry>
+</properties>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="72ef71ef-0d9c-4e94-9608-66f2884d1c0d" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Get VM Info]]></display-name>
+  <position y="50.0" x="100.0"></position>
+  <input>
+    <param name="vcdHost" type="vCloud:Host"></param>
+    <param name="vmEntityId" type="string"></param>
+    <param name="waitForPendingTasks" type="boolean"></param>
+  </input>
+  <output>
+    <param name="configuredNetworks" type="Properties"></param>
+    <param name="networkConnections" type="Properties"></param>
+    <param name="networkMACs" type="Properties"></param>
+    <param name="vmName" type="string"></param>
+    <param name="networkIpAddrs" type="Properties"></param>
+    <param name="vimServerHref" type="string"></param>
+  </output>
+  <workflow-item  name="item0" type="end" end-mode="0">
+    <position y="45.40909090909091" x="384.5"></position>
+  </workflow-item >
+  <workflow-item  name="item1" out-name="item0" type="task">
+    <display-name><![CDATA[Scriptable task]]></display-name>
+    <script encoded="false"><![CDATA[var vm = vcdHost.getEntityById(VclFinderType.VM, vmEntityId);
+if (vm) {
+    vmName = vm.name;
+    vimServerHref = vm.getVMVimRef().vimServerRef.href;
+
+	var vApp = vm.parent;
+	var vAppEntityId = vApp.id;
+	var vAppName = vApp.name;
+	
+	if (waitForPendingTasks) {
+	    // Wait for all the VApp pending tasks to be completed before looking at the network config
+		while (vApp.tasks != null) {
+			var vAppPendingTasks = vApp.tasks.getTasks();
+	        var tasksCompleted = 0;
+	        var tasksCount = vAppPendingTasks.length;
+			for (var i in vAppPendingTasks) {
+			    var vAppPendingTask = vAppPendingTasks[i];
+			    System.log("Pending task: " + vAppPendingTask + " status: " + vAppPendingTask.status);
+			    if (vAppPendingTask.status != "running") {
+			        tasksCompleted++;
+			    }
+			}
+			if (tasksCompleted >= tasksCount) {
+			   break;
+			}
+			System.sleep(1000);
+	        vApp = vcdHost.getEntityById(VclFinderType.VAPP, vAppEntityId);
+	    }
+	}
+	
+	var user = vApp.owner.user.name;
+	var userHref = vApp.owner.user.href;
+	var userHrefParts = userHref.split('/');
+	var userEntityId = "urn:vcloud:user:" + userHrefParts[userHrefParts.length - 1];
+	
+	var vdc = vApp.parent;
+	var vdcEntityId = vdc.id;
+	
+	// Get the vApp's network config section
+	// It may not be available right away - may need to poll
+	var networkConfigSection;
+	for (var i = 0; i < 15; i++) {
+      networkConfigSection = vApp.getNetworkConfigSection();
+      if (networkConfigSection) {
+         break;
+      }
+
+      System.log("No network config section found in vApp. Trying to retrieve it again");
+      System.sleep(1000);
+      vApp = vcdHost.getEntityById(VclFinderType.VAPP, vAppEntityId);
+   }
+	
+	if (networkConfigSection != null) {
+		var networkConfig = networkConfigSection.networkConfig;
+		var networkConfigItems = networkConfig.enumerate();
+		
+		configuredNetworks = new Properties();
+		for (var i in networkConfigItems) {
+		   var networkConfigItem = networkConfigItems[i];
+		  
+		   // Extract the network's href using the XML output since there is no getter available for it
+		   default xml namespace="http://www.vmware.com/vcloud/v1.5";
+		   var vAppNetworkConfigurationType = new XML(networkConfigItem.toXml());
+		   var href = vAppNetworkConfigurationType.Link.(@rel == "repair").@href;
+		   if (!href || href.length() == 0) {
+		      break;
+		   }
+		
+		   var repairStr = "/action/reset";
+		   var pos = href.indexOf(repairStr);
+		   if (pos != -1) {
+		      href = href.substring(0, pos);
+		   }
+		
+		   var networkName = networkConfigItem.networkName;
+		   var parentNetworkId;
+		   var parentNetworkName;
+		   if (networkConfigItem.configuration.parentNetwork) {
+		       parentNetworkId = "urn:vcloud:network:" + networkConfigItem.configuration.parentNetwork.id;
+			   parentNetworkName = networkConfigItem.configuration.parentNetwork.name;
+		   }
+		   var fenceMode = networkConfigItem.configuration.fenceMode;
+		
+		   System.log("Configured network " + networkName + " [parent network " + parentNetworkName + " (" + parentNetworkId + ")] in the vApp " + vAppName + " (" + vAppEntityId + ") with fenceMode " + fenceMode);
+		
+		   if (fenceMode == VclFenceModeValuesType.BRIDGED.value) {
+		      configuredNetworks.put(networkName, parentNetworkId);
+		   } else {
+		      var hrefParts = href.split('/');
+		      var networkId = "urn:vcloud:network:" + hrefParts[hrefParts.length - 1];
+		      configuredNetworks.put(networkName, networkId);
+		   }
+		}
+
+       	vm = vcdHost.getEntityById(VclFinderType.VM, vmEntityId); // Reload VM info in order to get the latest content
+		var networkConnectionSection = vm.getNetworkConnectionSection();
+		var networkConnection = networkConnectionSection.networkConnection;
+		var networkConnectionItems = networkConnection.enumerate();
+		
+		networkConnections = new Properties();
+		networkMACs = new Properties();
+		networkIpAddrs = new Properties();
+		for (var i in networkConnectionItems) {
+		   var networkConnectionItem = networkConnectionItems[i];
+		
+		   var networkName = networkConnectionItem.network;
+		   if (!networkName || networkName == "none") {
+		      break;
+		   }
+		
+		   var nicIndex = networkConnectionItem.networkConnectionIndex;
+		   var macAddress = networkConnectionItem.mACAddress;
+		   var ipAddress = networkConnectionItem.ipAddress;
+				
+		   System.log("Vm " + vm.name + " (" + vm.id + ") connected to network " + networkName + " @ NIC" + nicIndex);
+		
+		   var nic = "NIC" + nicIndex;
+		   networkConnections.put(nic, networkName);
+		   networkMACs.put(nic, macAddress);
+		   networkIpAddrs.put(nic, ipAddress);
+		}
+	}
+}]]></script>
+    <in-binding>
+      <bind name="vcdHost" type="vCloud:Host" export-name="vcdHost"></bind>
+      <bind name="vmEntityId" type="string" export-name="vmEntityId"></bind>
+      <bind name="waitForPendingTasks" type="boolean" export-name="waitForPendingTasks"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="configuredNetworks" type="Properties" export-name="configuredNetworks"></bind>
+      <bind name="networkConnections" type="Properties" export-name="networkConnections"></bind>
+      <bind name="networkMACs" type="Properties" export-name="networkMACs"></bind>
+      <bind name="vmName" type="string" export-name="vmName"></bind>
+      <bind name="networkIpAddrs" type="Properties" export-name="networkIpAddrs"></bind>
+      <bind name="vimServerHref" type="string" export-name="vimServerHref"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="204.5"></position>
+  </workflow-item >
+  <presentation>
+    <p-param name="vcdHost">
+      <desc><![CDATA[vcdHost]]></desc>
+    </p-param>
+    <p-param name="vmEntityId">
+      <desc><![CDATA[vmEntityId]]></desc>
+    </p-param>
+    <p-param name="waitForPendingTasks">
+      <desc><![CDATA[waitForPendingTasks]]></desc>
+    </p-param>
+  </presentation>
+</workflow>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item4" object-name="workflow:name=generic" id="d56ab5b2-6676-49f9-9fe4-6af925afb758" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Enable VLAN Override]]></display-name>
+  <position y="50.0" x="100.0"></position>
+  <input>
+    <param name="vcServer" type="VC:SdkConnection"></param>
+    <param name="dvPortGroupMoRef" type="string"></param>
+  </input>
+  <attrib name="task" type="VC:Task" read-only="false">
+    <value encoded="n"><![CDATA[__NULL__]]></value>
+  </attrib>
+  <attrib name="dvPortGroup" type="VC:DistributedVirtualPortgroup" read-only="false">
+    <value encoded="n"><![CDATA[__NULL__]]></value>
+  </attrib>
+  <attrib name="progress" type="boolean" read-only="false">
+    <value encoded="n"><![CDATA[false]]></value>
+    <description><![CDATA[Log progess while waiting for the task]]></description>
+  </attrib>
+  <attrib name="pollRate" type="number" read-only="false">
+    <value encoded="n"><![CDATA[__NULL__]]></value>
+    <description><![CDATA[Polling rate for the task state [seconds]]]></description>
+  </attrib>
+  <attrib name="errorCode" type="string" read-only="false">
+    <value encoded="n"><![CDATA[VC server not found]]></value>
+  </attrib>
+  <workflow-item  name="item0" type="end" end-mode="0">
+    <position y="272.68181818181813" x="484.5"></position>
+  </workflow-item >
+  <workflow-item  name="item4" out-name="item3" throw-bind-name="errorCode" type="task">
+    <display-name><![CDATA[Get vCenter PG]]></display-name>
+    <script encoded="false"><![CDATA[var managedObject = new VcManagedObjectReference();
+managedObject.type = "DistributedVirtualPortgroup";
+managedObject.value = dvPortGroupMoRef;			
+dvPortGroup = VcPlugin.convertToVimManagedObject(vcServer, managedObject);
+]]></script>
+    <in-binding>
+      <bind name="vcServer" type="VC:SdkConnection" export-name="vcServer"></bind>
+      <bind name="dvPortGroupMoRef" type="string" export-name="dvPortGroupMoRef"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="dvPortGroup" type="VC:DistributedVirtualPortgroup" export-name="dvPortGroup"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="204.5"></position>
+  </workflow-item >
+  <workflow-item  name="item5" out-name="item7" type="task">
+    <display-name><![CDATA[Set PG VLAN Enable flag]]></display-name>
+    <script encoded="false"><![CDATA[var spec = new VcDVPortgroupConfigSpec();
+spec.configVersion = dvPortGroup.config.configVersion; // required to peform update
+
+// Advanced Settings:
+// All these parameters must be defined in the policy object in order to perform update successfully
+spec.policy = new VcVMwareDVSPortgroupPolicy();
+spec.policy.portConfigResetAtDisconnect = dvPortGroup.config.policy.portConfigResetAtDisconnect;
+spec.policy.blockOverrideAllowed = dvPortGroup.config.policy.blockOverrideAllowed; 
+spec.policy.shapingOverrideAllowed = dvPortGroup.config.policy.shapingOverrideAllowed;
+spec.policy.vendorConfigOverrideAllowed = dvPortGroup.config.policy.vendorConfigOverrideAllowed;
+spec.policy.livePortMovingAllowed = dvPortGroup.config.policy.livePortMovingAllowed;
+spec.policy.vlanOverrideAllowed = true; 
+
+// Send the update to enable the VLAN override
+task = dvPortGroup.reconfigureDVPortgroup_Task(spec);]]></script>
+    <in-binding>
+      <bind name="dvPortGroup" type="VC:DistributedVirtualPortgroup" export-name="dvPortGroup"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="task" type="VC:Task" export-name="task"></bind>
+    </out-binding>
+    <position y="119.04545454545453" x="344.5"></position>
+  </workflow-item >
+  <workflow-item  name="item7" out-name="item8" type="task" script-module="com.vmware.library.vc.basic/vim3WaitTaskEnd">
+    <display-name><![CDATA[vim3WaitTaskEnd]]></display-name>
+    <script encoded="false"><![CDATA[//Auto generated script, cannot be modified !
+actionResult = System.getModule("com.vmware.library.vc.basic").vim3WaitTaskEnd(task,progress,pollRate) ;]]></script>
+    <in-binding>
+      <bind name="task" type="VC:Task" export-name="task">
+        <description><![CDATA[Task to Wait for]]></description>
+      </bind>
+      <bind name="progress" type="boolean" export-name="progress">
+        <description><![CDATA[Log progess while waiting for the task]]></description>
+      </bind>
+      <bind name="pollRate" type="number" export-name="pollRate">
+        <description><![CDATA[Polling rate for the task state [seconds]]]></description>
+      </bind>
+    </in-binding>
+    <out-binding>
+      <bind name="actionResult" type="Any" explicitly-not-bound="true" export-name="NULL"></bind>
+    </out-binding>
+    <description><![CDATA[Wait for a VC Task to end.
+When task ended, return the task result if any. ]]></description>
+    <position y="173.59090909090907" x="344.5"></position>
+  </workflow-item >
+  <workflow-item  name="item6" prototype-id="system-error" out-name="item0" type="task" interaction="l">
+    <display-name><![CDATA[System error]]></display-name>
+    <script encoded="false"><![CDATA[System.error("dvPortGroup not found: " + dvPortGroupMoRef);
+]]></script>
+    <in-binding>
+      <bind name="dvPortGroupMoRef" type="string" export-name="dvPortGroupMoRef"></bind>
+    </in-binding>
+    <out-binding></out-binding>
+    <description><![CDATA[Log the input text to the console log with level 'error']]></description>
+    <position y="164.5" x="564.5"></position>
+  </workflow-item >
+  <workflow-item  name="item8" prototype-id="system-log" out-name="item0" type="task" interaction="l">
+    <display-name><![CDATA[System log]]></display-name>
+    <script encoded="false"><![CDATA[System.log("VLAN enable executed successfully for PG: " + dvPortGroupMoRef);
+]]></script>
+    <in-binding>
+      <bind name="dvPortGroupMoRef" type="string" export-name="dvPortGroupMoRef"></bind>
+    </in-binding>
+    <out-binding></out-binding>
+    <description><![CDATA[Log the input text to the console log with level 'log']]></description>
+    <position y="237.22727272727272" x="344.5"></position>
+  </workflow-item >
+  <workflow-item  name="item3" out-name="item5" type="condition" alt-out-name="item6" comparator="0">
+    <display-name><![CDATA[dvPortGroup found?]]></display-name>
+    <script encoded="false"><![CDATA[//Generated by the system, cannot be edited
+return (dvPortGroup  != null ) ;]]></script>
+    <in-binding>
+      <bind name="dvPortGroup" type="VC:DistributedVirtualPortgroup" export-name="dvPortGroup"></bind>
+    </in-binding>
+    <condition name="dvPortGroup" type="VC:DistributedVirtualPortgroup" comparator="0" label="null"></condition>
+    <position y="45.40909090909091" x="344.5"></position>
+  </workflow-item >
+  <presentation>
+    <p-param name="vcServer">
+      <desc><![CDATA[vcServers]]></desc>
+    </p-param>
+    <p-param name="dvPortGroupMoRef">
+      <desc><![CDATA[dvPortGroupMoRef]]></desc>
+    </p-param>
+  </presentation>
+</workflow>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dunes-script-module name="getVmUUID" result-type="string" api-version="6.0.0" id="4da11e83-267d-4ccc-95f9-81dd5c631509" version="1.0.0" allowed-operations="vef">
+  <param n="vcdHost" t="vCloud:Host"><![CDATA[]]></param>
+  <param n="vcServer" t="VC:SdkConnection"><![CDATA[]]></param>
+  <param n="vmEntityId" t="string"><![CDATA[]]></param>
+  <script encoded="false"><![CDATA[var vm = vcdHost.getEntityById(VclFinderType.VM, vmEntityId);
+if (vm) {
+	var managedObject = new VcManagedObjectReference();
+	managedObject.type = "VirtualMachine";
+	managedObject.value = vm.getVMVimRef().moRef;
+	var vCenterVm = VcPlugin.convertToVimManagedObject(vcServer, managedObject);
+	return vCenterVm.config.uuid;
+} else {
+    return null;
+}]]></script>
+</dunes-script-module>

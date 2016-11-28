@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
+<entry key="name">Enable VLAN Override</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d56ab5b2-6676-49f9-9fe4-6af925afb758</entry>
+</properties>
