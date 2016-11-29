@@ -1,31 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="504f146e-de8d-4d51-9022-a11c97726bcf"  version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
-<display-name><![CDATA[Get Network Info]]></display-name>
-<position x='100.0' y='50.0'/>
-<input><param name='vcdHost' type='vCloud:Host' >
-</param>
-<param name='networkEntityId' type='string' >
-</param>
-</input><output><param name='networkName' type='string' >
-</param>
-<param name='orgEntityId' type='string' >
-</param>
-<param name='networkDescription' type='string' >
-</param>
-<param name='networkGateway' type='string' >
-</param>
-<param name='networkNetmask' type='string' >
-</param>
-<param name='dvPortGroupVimServerHref' type='string' >
-</param>
-<param name='dvPortGroupMoRef' type='string' >
-</param>
-</output><workflow-item name='item0' type='end' end-mode='0' >
-<position x='384.5' y='45.40909090909091'/>
-</workflow-item>
-<workflow-item name='item1' out-name='item0' type='task' >
-<display-name><![CDATA[Get network info]]></display-name>
-<script encoded='false'><![CDATA[var network = vcdHost.getEntityById(VclFinderType.ORG_VDC_NETWORK, networkEntityId);
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="504f146e-de8d-4d51-9022-a11c97726bcf" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Get Network Info]]></display-name>
+  <position y="50.0" x="100.0"></position>
+  <input>
+    <param name="vcdHost" type="vCloud:Host"></param>
+    <param name="networkEntityId" type="string"></param>
+  </input>
+  <output>
+    <param name="networkName" type="string"></param>
+    <param name="orgEntityId" type="string"></param>
+    <param name="networkDescription" type="string"></param>
+    <param name="networkGateway" type="string"></param>
+    <param name="networkNetmask" type="string"></param>
+    <param name="dvPortGroupVimServerHref" type="string"></param>
+    <param name="dvPortGroupMoRef" type="string"></param>
+  </output>
+  <workflow-item name="item0" type="end" end-mode="0">
+    <position y="45.40909090909091" x="384.5"></position>
+  </workflow-item>
+  <workflow-item name="item1" out-name="item0" type="task">
+    <display-name><![CDATA[Get network info]]></display-name>
+    <script encoded="false"><![CDATA[var network = vcdHost.getEntityById(VclFinderType.ORG_VDC_NETWORK, networkEntityId);
 if (network) {
    var vdc = network.parent;
    var organization = vdc.parent;
@@ -38,7 +33,6 @@ if (network) {
    default xml namespace="http://www.vmware.com/vcloud/v1.5";
    var orgVdcNetwork = new XML(network.toXml());
    var providerInfo = orgVdcNetwork.ProviderInfo;
-
    if (providerInfo && providerInfo.toString().length > 0) {
       // ProviderInfo only available with vCloud Director plug-in version 8.x
 
@@ -55,20 +49,27 @@ if (network) {
    }
 }
 ]]></script>
-<in-binding><bind name='networkEntityId' type='string' export-name="networkEntityId" ></bind>
-<bind name='vcdHost' type='vCloud:Host' export-name="vcdHost" ></bind>
-</in-binding><out-binding><bind name='networkName' type='string' export-name="networkName" ></bind>
-<bind name='orgEntityId' type='string' export-name="orgEntityId" ></bind>
-<bind name='networkDescription' type='string' export-name="networkDescription" ></bind>
-<bind name='networkGateway' type='string' export-name="networkGateway" ></bind>
-<bind name='networkNetmask' type='string' export-name="networkNetmask" ></bind>
-<bind name='dvPortGroupMoRef' type='string' export-name="dvPortGroupMoRef" ></bind>
-<bind name='dvPortGroupVimServerHref' type='string' export-name="dvPortGroupVimServerHref" ></bind>
-</out-binding><position x='204.5' y='55.40909090909091'/>
-</workflow-item>
-<presentation>
-<p-param name="networkEntityId"><desc><![CDATA[networkEntityId]]></desc>
-</p-param>
-<p-param name="vcdHost"><desc><![CDATA[vcdHost]]></desc>
-</p-param>
-</presentation></workflow>
+    <in-binding>
+      <bind name="networkEntityId" type="string" export-name="networkEntityId"></bind>
+      <bind name="vcdHost" type="vCloud:Host" export-name="vcdHost"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="networkName" type="string" export-name="networkName"></bind>
+      <bind name="orgEntityId" type="string" export-name="orgEntityId"></bind>
+      <bind name="networkDescription" type="string" export-name="networkDescription"></bind>
+      <bind name="networkGateway" type="string" export-name="networkGateway"></bind>
+      <bind name="networkNetmask" type="string" export-name="networkNetmask"></bind>
+      <bind name="dvPortGroupMoRef" type="string" export-name="dvPortGroupMoRef"></bind>
+      <bind name="dvPortGroupVimServerHref" type="string" export-name="dvPortGroupVimServerHref"></bind>
+    </out-binding>
+    <position y="55.40909090909091" x="204.5"></position>
+  </workflow-item>
+  <presentation>
+    <p-param name="networkEntityId">
+      <desc><![CDATA[networkEntityId]]></desc>
+    </p-param>
+    <p-param name="vcdHost">
+      <desc><![CDATA[vcdHost]]></desc>
+    </p-param>
+  </presentation>
+</workflow>
