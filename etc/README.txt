@@ -21,9 +21,11 @@ Installation steps:
    b. Follow the installation and configuration instructions in INSTALL.txt.
    c. There should be a session to the VSD server configured once the configuration steps have been performed.
       
-3. Install and configure vCloud Director plug-in version 8.0 in vRO:
+3. Install and configure vCloud Director plug-in version 5.5.1.2 or 8.0 in vRO:
    
-   a. Download plug-in from the following location (it requires a My VMWare account): http://www.vmware.com/download/download.do?downloadGroup=VCD_VCO_PLUGIN_800
+   a. Download plug-in from the following location (it requires a My VMWare account): 
+         Version 5.5.1.2: http://www.vmware.com/download/download.do?downloadGroup=VCD_VCO_PLUGIN_5512
+         Version 8.0:     http://www.vmware.com/download/download.do?downloadGroup=VCD_VCO_PLUGIN_800
    b. Follow installation and configuration instructions from the following page: 
          http://pubs.vmware.com/orchestrator-plugins/topic/com.vmware.using.vcloud_director.plugin.doc_55/GUID-20B31427-3E27-481B-9C1D-6ABC187098E7.html
    c. There should be a connection to the vCloud Director instance configured once the configuration steps have been performed.
