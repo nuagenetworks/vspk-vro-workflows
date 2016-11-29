@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="bf71b9cd-c513-403b-bf4e-7270e964505b" version="1.4.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+  <display-name><![CDATA[Setup L2DomainTemplate ACL]]></display-name>
+  <position y="50.0" x="100.0"></position>
+  <input>
+    <param name="l2DomainTemplate" type="VSPK:L2DomainTemplate"></param>
+  </input>
+  <attrib name="aclTemplateDescription" type="string" read-only="false">
+    <value encoded="n"><![CDATA[Default ACL]]></value>
+  </attrib>
+  <attrib name="aclTemplateActive" type="boolean" read-only="false">
+    <value encoded="n"><![CDATA[true]]></value>
+  </attrib>
+  <attrib name="aclTemplateDefaultAllowIP" type="boolean" read-only="false">
+    <value encoded="n"><![CDATA[true]]></value>
+  </attrib>
+  <attrib name="aclTemplateDefaultAllowNonIP" type="boolean" read-only="false">
+    <value encoded="n"><![CDATA[true]]></value>
+  </attrib>
+  <attrib name="ingressACLTemplateAllowL2AddressSpoofing" type="boolean" read-only="false">
+    <value encoded="n"><![CDATA[true]]></value>
+  </attrib>
+  <attrib name="ingressACLTemplateExternalID" type="string" read-only="false">
+    <value encoded="n"><![CDATA[default-vcloud-ingress-acl]]></value>
+  </attrib>
+  <attrib name="egressACLTemplateExternalID" type="string" read-only="false">
+    <value encoded="n"><![CDATA[default-vcloud-egress-acl]]></value>
+  </attrib>
+  <attrib name="aclTemplateName" type="string" read-only="false">
+    <value encoded="n"><![CDATA[Default]]></value>
+  </attrib>
+  <attrib name="ingressACLTemplate" type="VSPK:IngressACLTemplate" read-only="false">
+    <value encoded="n"><![CDATA[__NULL__]]></value>
+  </attrib>
+  <attrib name="egressACLTemplate" type="VSPK:EgressACLTemplate" read-only="false">
+    <value encoded="n"><![CDATA[__NULL__]]></value>
+  </attrib>
+  <workflow-item name="item0" type="end" end-mode="0">
+    <position y="45.40909090909091" x="544.5"></position>
+  </workflow-item>
+  <workflow-item name="item1" out-name="item2" type="link" linked-workflow-id="e8684c5d-c7e0-507e-acd3-bc8472375159">
+    <display-name><![CDATA[Add IngressACLTemplate to L2DomainTemplate]]></display-name>
+    <in-binding>
+      <bind name="l2DomainTemplateObj" type="VSPK:L2DomainTemplate" export-name="l2DomainTemplate"></bind>
+      <bind name="active" type="boolean" export-name="aclTemplateActive"></bind>
+      <bind name="allowL2AddressSpoof" type="boolean" export-name="ingressACLTemplateAllowL2AddressSpoofing"></bind>
+      <bind name="defaultAllowIP" type="boolean" export-name="aclTemplateDefaultAllowIP"></bind>
+      <bind name="defaultAllowNonIP" type="boolean" export-name="aclTemplateDefaultAllowNonIP"></bind>
+      <bind name="description" type="string" export-name="aclTemplateDescription"></bind>
+      <bind name="externalID" type="string" export-name="ingressACLTemplateExternalID"></bind>
+      <bind name="name" type="string" export-name="aclTemplateName"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="ingressACLTemplateObj" type="VSPK:IngressACLTemplate" export-name="ingressACLTemplate"></bind>
+    </out-binding>
+    <position y="55.90909090909091" x="205.0"></position>
+  </workflow-item>
+  <workflow-item name="item2" out-name="item0" type="link" linked-workflow-id="41903872-0e87-51f2-be96-a2b98c0f4b0b">
+    <display-name><![CDATA[Add EgressACLTemplate to L2DomainTemplate]]></display-name>
+    <in-binding>
+      <bind name="l2DomainTemplateObj" type="VSPK:L2DomainTemplate" export-name="l2DomainTemplate"></bind>
+      <bind name="active" type="boolean" export-name="aclTemplateActive"></bind>
+      <bind name="defaultAllowIP" type="boolean" export-name="aclTemplateDefaultAllowIP"></bind>
+      <bind name="defaultAllowNonIP" type="boolean" export-name="aclTemplateDefaultAllowNonIP"></bind>
+      <bind name="description" type="string" export-name="aclTemplateDescription"></bind>
+      <bind name="externalID" type="string" export-name="egressACLTemplateExternalID"></bind>
+      <bind name="name" type="string" export-name="aclTemplateName"></bind>
+    </in-binding>
+    <out-binding>
+      <bind name="egressACLTemplateObj" type="VSPK:EgressACLTemplate" export-name="egressACLTemplate"></bind>
+    </out-binding>
+    <position y="55.90909090909091" x="365.0"></position>
+  </workflow-item>
+  <presentation>
+    <p-param name="l2DomainTemplate">
+      <desc><![CDATA[l2DomainTemplate]]></desc>
+    </p-param>
+  </presentation>
+</workflow>
