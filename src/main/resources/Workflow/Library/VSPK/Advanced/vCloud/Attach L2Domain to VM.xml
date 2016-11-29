@@ -86,8 +86,7 @@ return (vm  != null ) ;]]></script>
   </workflow-item>
   <workflow-item name="item7" out-name="item9" type="task">
     <display-name><![CDATA[Get ME]]></display-name>
-    <script encoded="false"><![CDATA[var session;
-session = l2Domain.session;
+    <script encoded="false"><![CDATA[var session = l2Domain.session;
 me = session.me;]]></script>
     <in-binding>
       <bind name="l2Domain" type="VSPK:L2Domain" export-name="l2Domain"></bind>
@@ -234,7 +233,7 @@ try {
     <out-binding>
       <bind name="vPortId" type="string" export-name="vPortId"></bind>
     </out-binding>
-    <position y="291.77272727272725" x="844.5"></position>
+    <position y="291.77272727272725" x="824.5"></position>
   </workflow-item>
   <workflow-item name="item0" out-name="item11" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="7b0c3b5a-1201-5bfd-a122-5bdd7e3c5fe8">
     <display-name><![CDATA[Edit VMInterface]]></display-name>
