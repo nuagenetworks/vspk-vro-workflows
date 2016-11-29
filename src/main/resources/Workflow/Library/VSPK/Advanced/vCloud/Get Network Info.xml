@@ -38,8 +38,10 @@ if (network) {
    default xml namespace="http://www.vmware.com/vcloud/v1.5";
    var orgVdcNetwork = new XML(network.toXml());
    var providerInfo = orgVdcNetwork.ProviderInfo;
-   if (providerInfo.length > 0) {
+
+   if (providerInfo && providerInfo.toString().length > 0) {
       // ProviderInfo only available with vCloud Director plug-in version 8.x
+
       var matchResult = providerInfo.match("DistributedVirtualPortgroup:(.*) on [(](.*)[)]");
       dvPortGroupMoRef = matchResult[1];
       var vimServerId = matchResult[2];
