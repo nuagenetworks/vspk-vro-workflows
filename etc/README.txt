@@ -177,4 +177,4 @@ Support information:
 ====================
 
 For support and feature requests, please contact:
-nuage-oss-support@alcatel-lucent.com
+nuage-vro-plugin-support@alcatel-lucent.com
