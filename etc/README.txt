@@ -173,6 +173,11 @@ NOTE: The following blog can be used as a textual and visual reference for the s
    y. Click the "Save and close" button.
    z. Right click the subscription and select "Start policy".
   
+Using the workflows:
+====================
+
+Please refer to the "vCloud Integration Workflows - Supported Scenarios" document for examples of vCloud Director operations supported by the workflows.
+
 Support information:
 ====================
 
