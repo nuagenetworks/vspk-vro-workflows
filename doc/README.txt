@@ -8,7 +8,7 @@
    f. Make sure all the elements listed have a check beside them and then click the "Import selected elements" button.
    g. There should now be a new package called "net.nuagenetworks.vro.vspk.advanced" in the list of installed packages.
    
- 2. To configure the Nuage-VCloud Director integration workflows, please refer to the following documents:
+ 2. To configure and use the Nuage-VCloud Director integration workflows, please refer to the following document:
  
    - vCloud Integration Workflows - README.txt
    - vCloud Integration Workflows - Supported Scenarios.pptx
