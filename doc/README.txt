@@ -8,8 +8,10 @@
    f. Click on the "Import" button.
    g. Make sure all the elements listed have a check beside them and then click the "Import selected elements" button.
    h. There should now be a new package called "net.nuagenetworks.vro.vspk.advanced" in the list of installed packages.
+   i. Click the "Workflows" icon.
+   j. The workflows are located under the "VSPK/Advanced" folder.
    
- 2. To configure and use the Nuage-VCloud Director integration workflows, please refer to the following document:
+ 2. To configure and use the Nuage-VCloud Director integration workflows, please refer to the following documents:
  
    - vCloud Integration Workflows - README.txt
    - vCloud Integration Workflows - Supported Scenarios.pptx
