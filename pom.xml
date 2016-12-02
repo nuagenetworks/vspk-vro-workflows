@@ -23,7 +23,7 @@
     <repository>
       <id>added-by-archetype</id>
       <name>This repo was added by the 'Expand to file system'</name>
-      <url>https://135.121.118.246:8281/vco-repo</url>
+      <url>${repoUrl}</url>
     </repository>
   </repositories>
 
@@ -31,7 +31,7 @@
     <pluginRepository>
       <id>added-by-archetype</id>
       <name>This repo was added by the 'Expand to file system'</name>
-      <url>https://135.121.118.246:8281/vco-repo</url>
+      <url>${repoUrl}</url>
     </pluginRepository>
   </pluginRepositories>
 
