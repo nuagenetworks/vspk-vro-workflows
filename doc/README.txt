@@ -1,6 +1,6 @@
  1. To install the Advanced Workflows package:
  
-   a. Aquire Advanced Workflows package (net.nuagenetworks.vro.vspk.advanced-x.x.x.package).
+   a. Aquire the Advanced Workflows package (net.nuagenetworks.vro.vspk.advanced-x.x.x.package).
    b. Log in to the vRO client.
    c. In the Orchestrator Client main window, select "Design" mode.
    d. Click on the "Import package..." icon.
