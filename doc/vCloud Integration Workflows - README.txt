@@ -41,16 +41,16 @@ Installation steps:
    g. Enter the User name, Password (and the Domain name if required) to login to the vCenter Server.
    h. Click the "Submit" button. 
      
-5. Install Nuage-VCloud Director integration package in vRO:
+5. Install the Advanced Workflows package in vRO:
 
-   a. Aquire Nuage vCD workflow bundle (net.nuagenetworks.vro.vspk.vcloud-x.x.x.package),
+   a. Aquire Nuage vCD workflow bundle (net.nuagenetworks.vro.vspk.advanced-x.x.x.package),
    b. Log in to the vRO client.
    c. In the Orchestrator Client main window, select "Design" mode.
    d. Click on the "Import package..." icon.
    e. Select the package file and click the "Open" button.
    f. Click on the "Import" button.
    g. Make sure all the elements listed have a check beside them and then click the "Import selected elements" button.
-   h. There should now be a new package called "net.nuagenetworks.vro.vspk.vcloud" in the list of installed packages.
+   h. There should now be a new package called "net.nuagenetworks.vro.vspk.advanced" in the list of installed packages.
 
 6. Create Enterprise template in VSD
 
