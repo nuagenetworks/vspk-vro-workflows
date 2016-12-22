@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item4" object-name="workflow:name=generic" id="cade4506-2a06-4d05-8b68-af0118509c10" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item4" object-name="workflow:name=generic" id="cade4506-2a06-4d05-8b68-af0118509c11" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Delete VM and associated VPorts]]></display-name>
   <position y="50.0" x="100.0"></position>
   <input>
@@ -59,7 +59,7 @@ for (var i in vmInterfaces) {
       <bind name="vPortId" type="Array/string" export-name="*vPortIds"></bind>
     </in-binding>
     <out-binding></out-binding>
-    <reference type="Workflow" id="d4c534af-4223-4fb2-8e62-80ff66646272"></reference>
+    <reference type="Workflow" id="d4c534af-4223-4fb2-8e62-80ff66646213"></reference>
     <position y="55.40909090909091" x="644.5"></position>
   </workflow-item>
   <presentation>

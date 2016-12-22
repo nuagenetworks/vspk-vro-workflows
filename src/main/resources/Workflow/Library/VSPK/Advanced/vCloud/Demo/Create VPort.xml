@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item7" object-name="workflow:name=generic" id="e4a32e09-ddd4-4987-bdb4-fa0a5c9f3e26" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item7" object-name="workflow:name=generic" id="e4a32e09-ddd4-4987-bdb4-fa0a5c9f3e07" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Create VPort]]></display-name>
   <position y="36.31818181818181" x="105.0"></position>
   <input>

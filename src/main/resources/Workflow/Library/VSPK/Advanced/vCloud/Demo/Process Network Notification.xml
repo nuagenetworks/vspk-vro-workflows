@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item8" object-name="workflow:name=generic" id="92c42ce2-2dd4-4459-8988-243a181b0c96" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item8" object-name="workflow:name=generic" id="92c42ce2-2dd4-4459-8988-243a181b0c21" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Process Network Notification]]></display-name>
   <position y="54.5" x="105.0"></position>
   <input>
@@ -20,7 +20,7 @@
     <description><![CDATA[Log the input text to the console log with level 'log']]></description>
     <position y="128.13636363636363" x="464.5"></position>
   </workflow-item>
-  <workflow-item name="item3" out-name="item0" type="link" linked-workflow-id="261d19ab-ab2b-443d-9070-2f44b744fec9">
+  <workflow-item name="item3" out-name="item0" type="link" linked-workflow-id="261d19ab-ab2b-443d-9070-2f44b744fe03">
     <display-name><![CDATA[Create Network]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
@@ -54,7 +54,7 @@ if (actionType == "create") {
     <condition name="" type="boolean" comparator="6" label="item2"></condition>
     <position y="64.5" x="305.0"></position>
   </workflow-item>
-  <workflow-item name="item9" out-name="item0" type="link" linked-workflow-id="6926b57b-a136-4824-9cdb-937268848351">
+  <workflow-item name="item9" out-name="item0" type="link" linked-workflow-id="6926b57b-a136-4824-9cdb-937268848308">
     <display-name><![CDATA[Delete Network]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>

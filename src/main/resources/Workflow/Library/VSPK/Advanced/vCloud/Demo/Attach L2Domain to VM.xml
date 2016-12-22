@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item6" object-name="workflow:name=generic" id="05f445b6-f039-442d-919a-4746378e595e" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item6" object-name="workflow:name=generic" id="05f445b6-f039-442d-919a-4746378e5900" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Attach L2Domain to VM]]></display-name>
   <position y="50.0" x="100.0"></position>
   <input>
@@ -143,7 +143,7 @@ return (vmInterface  != null ) ;]]></script>
     <condition name="vmInterface" type="VSPK:VMInterface" comparator="0" label="null"></condition>
     <position y="218.13636363636363" x="884.5"></position>
   </workflow-item>
-  <workflow-item name="item1" out-name="item15" type="link" linked-workflow-id="e4a32e09-ddd4-4987-bdb4-fa0a5c9f3e26">
+  <workflow-item name="item1" out-name="item15" type="link" linked-workflow-id="e4a32e09-ddd4-4987-bdb4-fa0a5c9f3e07">
     <display-name><![CDATA[Create VPort]]></display-name>
     <in-binding>
       <bind name="l2Domain" type="VSPK:L2Domain" export-name="l2Domain"></bind>
@@ -156,7 +156,7 @@ return (vmInterface  != null ) ;]]></script>
     </out-binding>
     <position y="101.36363636363636" x="645.0"></position>
   </workflow-item>
-  <workflow-item name="item10" out-name="item12" type="link" linked-workflow-id="e4a32e09-ddd4-4987-bdb4-fa0a5c9f3e26">
+  <workflow-item name="item10" out-name="item12" type="link" linked-workflow-id="e4a32e09-ddd4-4987-bdb4-fa0a5c9f3e07">
     <display-name><![CDATA[Create VPort]]></display-name>
     <in-binding>
       <bind name="l2Domain" type="VSPK:L2Domain" export-name="l2Domain"></bind>

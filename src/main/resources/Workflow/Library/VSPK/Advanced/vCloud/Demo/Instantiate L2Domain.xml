@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item0" object-name="workflow:name=generic" id="136273d6-529c-4fc0-aa71-119caef6d354" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item0" object-name="workflow:name=generic" id="136273d6-529c-4fc0-aa71-119caef6d320" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Instantiate L2Domain]]></display-name>
   <position y="50.0" x="100.0"></position>
   <input>
@@ -88,7 +88,7 @@ actionResult = System.getModule("net.nuagenetworks.vro.vspk.vcloud").getSimpleEn
     </out-binding>
     <position y="55.40909090909091" x="544.5"></position>
   </workflow-item>
-  <workflow-item name="item6" out-name="item10" type="link" linked-workflow-id="d191742a-f5bd-4fc3-a823-c0d687678fd7">
+  <workflow-item name="item6" out-name="item10" type="link" linked-workflow-id="d191742a-f5bd-4fc3-a823-c0d687678f16">
     <display-name><![CDATA[Find L2Domain by ExternalID]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
@@ -110,7 +110,7 @@ actionResult = System.getModule("net.nuagenetworks.vro.vspk.vcloud").getSimpleEn
     </out-binding>
     <position y="137.22727272727272" x="1165.0"></position>
   </workflow-item>
-  <workflow-item name="item0" out-name="item1" type="link" linked-workflow-id="a015c5b9-dc3c-47a7-82e4-032dd62b5f12">
+  <workflow-item name="item0" out-name="item1" type="link" linked-workflow-id="a015c5b9-dc3c-47a7-82e4-032dd62b5f13">
     <display-name><![CDATA[Find Enterprise For Organization]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>

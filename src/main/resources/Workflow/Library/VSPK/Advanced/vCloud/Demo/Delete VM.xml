@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item10" object-name="workflow:name=generic" id="d33ade9e-c6b8-478a-8614-4a0bb2172b9a" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item10" object-name="workflow:name=generic" id="d33ade9e-c6b8-478a-8614-4a0bb2172b12" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Delete VM]]></display-name>
   <position y="45.90909090909091" x="45.0"></position>
   <input>
@@ -75,7 +75,7 @@ return (vm  != null ) ;]]></script>
   <workflow-item name="item7" type="end" end-mode="0">
     <position y="199.95454545454544" x="784.5"></position>
   </workflow-item>
-  <workflow-item name="item1" out-name="item7" type="link" linked-workflow-id="cade4506-2a06-4d05-8b68-af0118509c10">
+  <workflow-item name="item1" out-name="item7" type="link" linked-workflow-id="cade4506-2a06-4d05-8b68-af0118509c11">
     <display-name><![CDATA[Delete VM and associated VPorts]]></display-name>
     <in-binding>
       <bind name="vm" type="VSPK:VM" export-name="vm"></bind>

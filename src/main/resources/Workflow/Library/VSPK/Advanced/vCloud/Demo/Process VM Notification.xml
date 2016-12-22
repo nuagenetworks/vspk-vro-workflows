@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="819daddc-71be-4c04-828c-f847e87cf2ce" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="819daddc-71be-4c04-828c-f847e87cf224" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Process VM Notification]]></display-name>
   <position y="50.0" x="100.0"></position>
   <input>
@@ -41,7 +41,7 @@ if (actionType == "create") {
   <workflow-item name="item4" type="end" end-mode="0">
     <position y="172.68181818181816" x="304.5"></position>
   </workflow-item>
-  <workflow-item name="item0" out-name="item4" type="link" linked-workflow-id="225bc14d-14bd-4080-b7ef-f47d75f29dee">
+  <workflow-item name="item0" out-name="item4" type="link" linked-workflow-id="225bc14d-14bd-4080-b7ef-f47d75f29d06">
     <display-name><![CDATA[Create VM]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
@@ -52,7 +52,7 @@ if (actionType == "create") {
     <out-binding></out-binding>
     <position y="119.04545454545453" x="104.5"></position>
   </workflow-item>
-  <workflow-item name="item2" out-name="item4" type="link" linked-workflow-id="d33ade9e-c6b8-478a-8614-4a0bb2172b9a">
+  <workflow-item name="item2" out-name="item4" type="link" linked-workflow-id="d33ade9e-c6b8-478a-8614-4a0bb2172b12">
     <display-name><![CDATA[Delete VM]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item0" object-name="workflow:name=generic" id="1390e6e1-44da-4efe-97df-526bb6487612" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item0" object-name="workflow:name=generic" id="1390e6e1-44da-4efe-97df-526bb6487623" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Process vCloud Notification]]></display-name>
   <position y="36.81818181818181" x="105.0"></position>
   <input>
@@ -113,7 +113,7 @@ if (entityType == "vcloud:org") {
     <description><![CDATA[Log the input text to the console log with level 'log']]></description>
     <position y="237.22727272727272" x="524.5"></position>
   </workflow-item>
-  <workflow-item name="item11" out-name="item7" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="92c42ce2-2dd4-4459-8988-243a181b0c96">
+  <workflow-item name="item11" out-name="item7" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="92c42ce2-2dd4-4459-8988-243a181b0c21">
     <display-name><![CDATA[Process Network Notification]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
@@ -125,7 +125,7 @@ if (entityType == "vcloud:org") {
     <out-binding></out-binding>
     <position y="237.22727272727272" x="304.5"></position>
   </workflow-item>
-  <workflow-item name="item1" out-name="item7" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="819daddc-71be-4c04-828c-f847e87cf2ce">
+  <workflow-item name="item1" out-name="item7" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="819daddc-71be-4c04-828c-f847e87cf224">
     <display-name><![CDATA[Process VM Notification]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>
@@ -137,7 +137,7 @@ if (entityType == "vcloud:org") {
     <out-binding></out-binding>
     <position y="237.22727272727272" x="424.5"></position>
   </workflow-item>
-  <workflow-item name="item2" out-name="item7" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="3120a7c8-e517-473b-87a9-2f3679c1aa8c">
+  <workflow-item name="item2" out-name="item7" catch-name="item8" throw-bind-name="errorCode" type="link" linked-workflow-id="3120a7c8-e517-473b-87a9-2f3679c1aa22">
     <display-name><![CDATA[Process Organization Notification]]></display-name>
     <in-binding>
       <bind name="session" type="VSPK:Session" export-name="session"></bind>

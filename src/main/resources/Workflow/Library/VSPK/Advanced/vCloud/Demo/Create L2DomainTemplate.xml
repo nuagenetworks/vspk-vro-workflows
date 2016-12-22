@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="4bdae457-bc74-4de8-b620-fd185abe16a1" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="4bdae457-bc74-4de8-b620-fd185abe1602" version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0">
   <display-name><![CDATA[Create L2DomainTemplate]]></display-name>
   <position y="18.136363636363633" x="105.0"></position>
   <input>
@@ -79,7 +79,7 @@ return (l2DomainTemplate  != null ) ;]]></script>
     <description><![CDATA[Log the input text to the console log with level 'log']]></description>
     <position y="209.95454545454544" x="405.0"></position>
   </workflow-item>
-  <workflow-item name="item6" out-name="item7" type="link" linked-workflow-id="bf71b9cd-c513-403b-bf4e-7270e964505b">
+  <workflow-item name="item6" out-name="item7" type="link" linked-workflow-id="bf71b9cd-c513-403b-bf4e-7270e9645025">
     <display-name><![CDATA[Setup L2DomainTemplate ACL]]></display-name>
     <in-binding>
       <bind name="l2DomainTemplate" type="VSPK:L2DomainTemplate" export-name="l2DomainTemplate"></bind>
