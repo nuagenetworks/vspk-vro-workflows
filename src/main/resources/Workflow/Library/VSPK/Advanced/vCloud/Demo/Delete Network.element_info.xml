@@ -2,8 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
-<entry key="name">Instantiate L2Domain</entry>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud.Demo</entry>
+<entry key="name">Delete Network</entry>
 <entry key="type">Workflow</entry>
-<entry key="id">136273d6-529c-4fc0-aa71-119caef6d354</entry>
+<entry key="id">6926b57b-a136-4824-9cdb-937268848351</entry>
 </properties>

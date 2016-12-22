@@ -2,8 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
-<entry key="name">Create Enterprise Admin</entry>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud.Demo</entry>
+<entry key="name">Delete VPort</entry>
 <entry key="type">Workflow</entry>
-<entry key="id">970b9ed0-a704-4d8e-8189-21da75fc9381</entry>
+<entry key="id">d4c534af-4223-4fb2-8e62-80ff66646272</entry>
 </properties>

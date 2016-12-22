@@ -2,8 +2,8 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Advanced.vCloud</entry>
-<entry key="name">Create Organization</entry>
+<entry key="categoryPath">Library.VSPK.Advanced.vCloud.Demo</entry>
+<entry key="name">Find or Create Enterprise for Organization</entry>
 <entry key="type">Workflow</entry>
-<entry key="id">5ed98f9d-6f10-4ad4-8424-0e51055a5080</entry>
+<entry key="id">722235f2-37ef-464f-a6fe-bad2ee13c8cd</entry>
 </properties>
